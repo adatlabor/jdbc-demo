@@ -1,0 +1,18 @@
+javac_env = Environment(JAVACFLAGS='-encoding UTF-8', JAVACLASSPATH=['.', 'lib/ojdbc6.jar'])
+my_class_files=javac_env.Java('classes', 'src')
+
+# jmarton, 20150414: The following would be much nicer, but Scons 2.3.4 sometimes lacks a few Java class files generated
+# see: classes/MyJwsApplication$4.class is left after "scons -c"
+#jar_env = Environment()
+#jar_env.Jar(target='unsigned.jar', source=my_class_files+['MANIFEST.MF'] )
+jar_env = Environment(JARCHDIR='classes')
+jar_env.Jar(target='unsigned.jar', source=['classes', 'conf/MANIFEST.MF'] )
+
+jarsigner_build = Builder(action='jarsigner -keystore $KEYSTORE '
+    '-storepass webstart -tsa $TSA -signedjar $TARGET $SOURCE webstart')
+jarsigner_env = Environment(BUILDERS={'JarSigner': jarsigner_build}, KEYSTORE='conf/webstart.keystore', TSA='http://timestamp.digicert.com/')
+jar_file=jarsigner_env.JarSigner(target='signed.jar', source='unsigned.jar')
+
+
+jardeploy_env = Environment()
+jardeploy_env.Install(target='web/', source=jar_file+['lib/ojdbc6.jar'])
