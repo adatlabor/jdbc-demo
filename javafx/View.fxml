@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+
+<!-- All the GUI components -->
+
+<AnchorPane fx:controller="application.Controller" xmlns:fx="http://javafx.com/fxml/1" prefWidth="600" prefHeight="500" minWidth="600" minHeight="500">
+	<!-- Connection panel -->
+	<VBox alignment="CENTER" spacing="10" prefWidth="580" >
+		<HBox spacing="10" prefWidth="580" alignment="CENTER" >
+			<!-- Username field -->
+			<TextField fx:id="usernamefield" maxWidth="200" maxHeight="27" minWidth="100" minHeight="27" prefWidth="150" prefHeight="27" />
+			<!-- Password field -->
+			<TextField fx:id="passwordfield" maxWidth="200" maxHeight="27" minWidth="100" minHeight="27" prefWidth="150" prefHeight="27" />
+			<!-- Connect button to the connection panel -->
+			<Button text="" onAction="#connect" fx:id="connectbutton" />
+			<!-- Little label to show the connection status -->
+			<Label fx:id="connectionstatelabel" minWidth="200" minHeight="17" prefWidth="200" prefHeight="17" />
+		</HBox>
+		
+		<!-- Tabbed pane -->
+		<TabPane >
+			<tabs>
+				<!-- Log tab -->
+				<Tab text="test1">
+					<!-- Log scroll panel -->
+					<ScrollPane  fitToWidth="true" >
+						<TextArea fx:id="log" />
+					</ScrollPane>
+				</Tab>
+				<!-- Search tab -->
+				<Tab text="test2">
+				</Tab>
+			</tabs>
+		</TabPane>
+	</VBox>
+	
+	
+	
+	<!-- Log tab -->
+	
+	<!-- Search tab -->
+	
+</AnchorPane>
