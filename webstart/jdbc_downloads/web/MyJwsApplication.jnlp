@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jnlp codebase="http://rapid.eik.bme.hu/~marton/jdbc" href="MyJwsApplication.jnlp">
+<jnlp codebase="http://rapid.eik.bme.hu/~pentacle.lk/jdbc/web" href="MyJwsApplication.jnlp">
 	<information>
 		<title>MyJwsApplication</title>
 		<vendor>Gasa</vendor>
@@ -9,8 +9,8 @@
 		<all-permissions />
 	</security>
 	<resources arch="" os="">
-		<j2se version="1.6+" />
-		<jar href="ojdbc6.jar" />
+		<j2se version="1.7+" />
+		<jar href="ojdbc7.jar" />
 		<jar href="MyJwsApplication.jar" main="true" />
 	</resources>
 	<application-desc main-class="MyJwsApplication" />
