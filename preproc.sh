@@ -9,17 +9,24 @@
 #
 # Use it on your own risk!
 
-# Edit here (DO NOT USE ANY SPEC. CHARACTERS):
-# ==================================>%============================================
-student_name='Hallgató';
-neptun='aaa000'; # == Rapid user
-title='JDBC mérés';
-initpage_title='Minta kezdőoldal';
-desc='Próbaalkalmazás a Szoftver laboratórium 5. c. tárgy JDBC méréséhez';
-app_name='MyJwsApplication';
-app_model='MyJwsApplicationModel';
-ojdbc_driver='ojdbc6'; # Without extension
-# ==================================>%============================================
+# include local config, if exists, exit otherwise.
+LOCAL_CONFIGFILE=`dirname $0`/preproc.config.sh
+if [ -f ${LOCAL_CONFIGFILE} ]; then
+  . ${LOCAL_CONFIGFILE}
+else
+  cat <<HERE
+
+!!! ${LOCAL_CONFIGFILE} not found. !!!
+
+Perhaps you forgot to create it by copying ${LOCAL_CONFIGFILE}.sample
+
+Aborting preprocessing.
+
+HERE
+
+  exit 2
+fi
+
 
 # Sed patterns
 declare -a SED_PATTERNS;
@@ -31,13 +38,7 @@ PARAMS=("$student_name " "$neptun" "$title " "$initpage_title " "$desc " "$app_n
 
 # File paths
 declare -a FILEPATHS;
-FILEPATHS=('./index.html' './jdbc/index.html' './jdbc/Makefile' './jdbc/MANIFEST.MF' './jdbc/application.java' './jdbc/applicationmodel.java' './jdbc/application.jnlp');
-
-# Filenames
-declare -a FILENAMES;
-FILENAMES=('application.jnlp' 'application.jar' 'application.java' 'applicationmodel.java');
-# Base directory
-BASEDIR='./jdbc';
+FILEPATHS=('./web/index.html' './conf/MANIFEST.MF' './src/application.java' './src/applicationmodel.java' './src/application.jnlp');
 
 # Replace placeholders in files with the appropriate parameters
 for FILEPATH in "${FILEPATHS[@]}"
@@ -50,21 +51,22 @@ do
     done
     
     #echo -e $SED_PATTERN'\n';
-    cat "$FILEPATH" | sed -e "$SED_PATTERN" > "${FILEPATH}.tmp";
+    sed -i -e "$SED_PATTERN" "${FILEPATH}";
 done
 
-# Renaming temporary files
-for FILEPATH in "${FILEPATHS[@]}"
-do
-    mv "${FILEPATH}.tmp" "$FILEPATH";
-done
-
-# Rename files
-# JNLP file
-mv "$BASEDIR/${FILENAMES[0]}" "$BASEDIR/$app_name.jnlp";
-# JAR file
-mv "$BASEDIR/${FILENAMES[1]}" "$BASEDIR/$app_name.jar";
-# Application's main Java source file
-mv "$BASEDIR/${FILENAMES[2]}" "$BASEDIR/$app_name.java";
-# Application model's Java source file
-mv "$BASEDIR/${FILENAMES[3]}" "$BASEDIR/$app_model.java";
+# remove file renamings for now, jmarton, 20160319
+## Filenames
+#declare -a FILENAMES;
+#FILENAMES=('application.jnlp' 'application.jar' 'application.java' 'applicationmodel.java');
+## Base directory
+#BASEDIR='./jdbc';
+#
+## Rename files
+## JNLP file
+#mv "$BASEDIR/${FILENAMES[0]}" "$BASEDIR/$app_name.jnlp";
+## JAR file
+#mv "$BASEDIR/${FILENAMES[1]}" "$BASEDIR/$app_name.jar";
+## Application's main Java source file
+#mv "$BASEDIR/${FILENAMES[2]}" "$BASEDIR/$app_name.java";
+## Application model's Java source file
+#mv "$BASEDIR/${FILENAMES[3]}" "$BASEDIR/$app_model.java";
