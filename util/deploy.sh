@@ -32,6 +32,7 @@ Working environment was successfully set!
 
 Do not forget to:
 * add Oracle JDBC driver to the lib/ subdirectory.
-* create and edit preproc.config.sh (by copying preproc.config.sh.sample)
-* run ./preproc.sh
+* create and edit conf/preproc.config.sh (by copying preproc.config.sh.sample)
+* change dir to jdbc workdir (cd jdbc)
+* run ./util/preproc.sh
 HERE

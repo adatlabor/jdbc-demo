@@ -10,7 +10,7 @@
 # Use it on your own risk!
 
 # include local config, if exists, exit otherwise.
-LOCAL_CONFIGFILE=`dirname $0`/preproc.config.sh
+LOCAL_CONFIGFILE=`dirname $0`/../conf/preproc.config.sh
 if [ -f ${LOCAL_CONFIGFILE} ]; then
   . ${LOCAL_CONFIGFILE}
 else
