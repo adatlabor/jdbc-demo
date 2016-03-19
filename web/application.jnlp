@@ -2,7 +2,7 @@
 <jnlp codebase="http://rapid.eik.bme.hu/~$$neptun$$/jdbc" href="application.jnlp">
 	<information>
 		<title>$$app_name$$</title>
-		<vendor>$$student_name$$</vendor>
+		<vendor>Gasa</vendor>
 		<icon href="logo.png" kind="default" />
 	</information>
 	<security>
@@ -11,7 +11,7 @@
 	<resources arch="" os="">
 		<j2se version="1.7+" />
 		<jar href="$$ojdbc_driver$$.jar" />
-		<jar href="MyJwsApplication.jar" main="true" />
+		<jar href="MySignedApplication.jar" main="true" />
 	</resources>
 	<application-desc main-class="$$app_name$$" />
 </jnlp>
