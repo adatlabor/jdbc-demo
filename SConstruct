@@ -3,8 +3,8 @@ javac_env = Environment(JAVACFLAGS='-encoding UTF-8', JAVACLASSPATH=['.', 'lib/o
 my_class_files=javac_env.Java('classes', 'src')
 
 # Generate an unsigned .jar file from .class files
-jar_env = Environment(JARCHDIR='classes')
-jar_env.Jar(target='unsigned.jar', source=['classes', 'conf/MANIFEST.MF', 'resources/'] )
+jar_env = Environment()
+jar_env.Jar(target='unsigned.jar', source=my_class_files+['conf/MANIFEST.MF', 'resources/'] )
 
 # Sign .jar file
 # Create builder (jarsigner)
