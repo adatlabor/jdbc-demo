@@ -29,7 +29,7 @@ public class AppMain extends Application {
 		try {
 
 			// Create a loader object and load View and Controller
-			final FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/View.fxml"));
+			final FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/View.fxml"));
 			final VBox viewRoot = (VBox) loader.load();
 
 			// Get controller object and initialize it
