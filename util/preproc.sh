@@ -38,7 +38,7 @@ PARAMS=("$student_name" "$neptun" "$title" "$initpage_title" "$desc" "$app_name"
 
 # File paths
 declare -a FILEPATHS;
-FILEPATHS=('./web/index.html' './conf/MANIFEST.MF' './src/application.jnlp');
+FILEPATHS=('./web/index.html' './conf/MANIFEST.MF' './web/application.jnlp');
 
 # Replace placeholders in files with the appropriate parameters
 for FILEPATH in "${FILEPATHS[@]}"
