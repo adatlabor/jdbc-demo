@@ -3,8 +3,8 @@ javac_env = Environment(JAVACFLAGS='-encoding UTF-8', JAVACLASSPATH=['.', 'lib/o
 my_class_files=javac_env.Java('classes', 'src')
 
 # Generate an unsigned .jar file from .class files
-jar_env = Environment(JARCHDIR='classes')
-jar_env.Jar(target='unsigned.jar', source=['classes', 'conf/MANIFEST.MF'] )
+jar_env = Environment()
+jar_env.Jar(target='unsigned.jar', source=my_class_files+['conf/MANIFEST.MF', 'resources/'] )
 
 # Sign .jar file
 # Create builder (jarsigner)
@@ -13,7 +13,7 @@ jarsigner_build = Builder(action='jarsigner -keystore $KEYSTORE '
 # Set parameters
 jarsigner_env = Environment(BUILDERS={'JarSigner': jarsigner_build}, KEYSTORE='conf/webstart.keystore', TSA='http://timestamp.digicert.com/')
 # Sign .jar file
-jar_file=jarsigner_env.JarSigner(target='MyJwsApplication.jar', source='unsigned.jar')
+jar_file=jarsigner_env.JarSigner(target='MySignedApplication.jar', source='unsigned.jar')
 
 # Deploy .jar file and JDBC driver into 'web' directory
 jardeploy_env = Environment()

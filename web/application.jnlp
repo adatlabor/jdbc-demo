@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jnlp codebase="http://rapid.eik.bme.hu/~pentacle.lk/jdbc/web" href="MyJwsApplication.jnlp">
+<jnlp codebase="http://rapid.eik.bme.hu/~$$neptun$$/jdbc" href="application.jnlp">
 	<information>
-		<title>MyJwsApplication</title>
+		<title>$$app_name$$</title>
 		<vendor>Gasa</vendor>
 		<icon href="logo.png" kind="default" />
 	</information>
@@ -10,8 +10,8 @@
 	</security>
 	<resources arch="" os="">
 		<j2se version="1.7+" />
-		<jar href="ojdbc7.jar" />
-		<jar href="MyJwsApplication.jar" main="true" />
+		<jar href="$$ojdbc_driver$$.jar" />
+		<jar href="MySignedApplication.jar" main="true" />
 	</resources>
-	<application-desc main-class="MyJwsApplication" />
+	<application-desc main-class="$$app_name$$" />
 </jnlp>
