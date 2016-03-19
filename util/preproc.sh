@@ -4,7 +4,7 @@
 #
 # This is an _experimental_ shell script which can be used to automatically modify
 # the name, title, description of the sample Java Web Start application in the
-# appropriate (source) files. In addition, student name, neptun code and
+# appropriate files. In addition, student name, neptun code and
 # name of ojdbc driver can also be specified.
 #
 # Use it on your own risk!
@@ -30,15 +30,15 @@ fi
 
 # Sed patterns
 declare -a SED_PATTERNS;
-SED_PATTERNS=('\$\$student_name\$\$' '\$\$neptun\$\$' '\$\$title\$\$' '\$\$initpage_title\$\$' '\$\$desc\$\$' '\$\$app_name\$\$' '\$\$app_model\$\$' '\$\$ojdbc_driver\$\$');
+SED_PATTERNS=('\$\$student_name\$\$' '\$\$neptun\$\$' '\$\$title\$\$' '\$\$initpage_title\$\$' '\$\$desc\$\$' '\$\$app_name\$\$' '\$\$ojdbc_driver\$\$');
 
 # User-specified params
 declare -a PARAMS;
-PARAMS=("$student_name " "$neptun" "$title " "$initpage_title " "$desc " "$app_name" "$app_model" "$ojdbc_driver");
+PARAMS=("$student_name" "$neptun" "$title" "$initpage_title" "$desc" "$app_name" "$ojdbc_driver");
 
 # File paths
 declare -a FILEPATHS;
-FILEPATHS=('./web/index.html' './conf/MANIFEST.MF' './src/application.java' './src/applicationmodel.java' './src/application.jnlp');
+FILEPATHS=('./web/index.html' './conf/MANIFEST.MF' './src/application.jnlp');
 
 # Replace placeholders in files with the appropriate parameters
 for FILEPATH in "${FILEPATHS[@]}"
@@ -53,20 +53,3 @@ do
     #echo -e $SED_PATTERN'\n';
     sed -i -e "$SED_PATTERN" "${FILEPATH}";
 done
-
-# remove file renamings for now, jmarton, 20160319
-## Filenames
-#declare -a FILENAMES;
-#FILENAMES=('application.jnlp' 'application.jar' 'application.java' 'applicationmodel.java');
-## Base directory
-#BASEDIR='./jdbc';
-#
-## Rename files
-## JNLP file
-#mv "$BASEDIR/${FILENAMES[0]}" "$BASEDIR/$app_name.jnlp";
-## JAR file
-#mv "$BASEDIR/${FILENAMES[1]}" "$BASEDIR/$app_name.jar";
-## Application's main Java source file
-#mv "$BASEDIR/${FILENAMES[2]}" "$BASEDIR/$app_name.java";
-## Application model's Java source file
-#mv "$BASEDIR/${FILENAMES[3]}" "$BASEDIR/$app_model.java";

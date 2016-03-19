@@ -39,7 +39,7 @@ public class Model {
 	}
 
 	/**
-	 * Give product name of the database
+	 * Gives product name of the database
 	 * 
 	 * @return Product name of the database
 	 */
@@ -50,7 +50,7 @@ public class Model {
 	}
 
 	/**
-	 * Give product version of the database
+	 * Gives product version of the database
 	 * 
 	 * @return Product version of the database
 	 */
@@ -61,7 +61,7 @@ public class Model {
 	}
 
 	/**
-	 * Give database URL
+	 * Gives database URL
 	 * 
 	 * @return Database URL
 	 */
@@ -72,7 +72,7 @@ public class Model {
 	}
 
 	/**
-	 * Give the message of last error
+	 * Gives the message of last error
 	 * 
 	 * @return Message of last error
 	 */
@@ -89,6 +89,7 @@ public class Model {
 	 *            User who has access to the database
 	 * @param password
 	 *            User's password
+     * @return True on success, false on fail
 	 */
 	public boolean connect(String userName, String password) {
 
@@ -179,6 +180,9 @@ public class Model {
 	/**
 	 * Method for Exercise #1
 	 * 
+     * @param keyword
+     *            Search keyword
+     *
 	 * @return Result of the query
 	 */
 	public ResultSet search(String keyword) {
@@ -192,6 +196,7 @@ public class Model {
 	 * 
 	 * @param data
 	 *            New or modified data
+     *
 	 * @return Type of action has been performed
 	 */
 	public ModifyResult modifyData(Map data) {
