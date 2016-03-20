@@ -10,6 +10,9 @@
 # Ignore configuration files
 *.config.sh
 
+# Ignore release file
+lab5jdbc.zip
+
 
 # Java-specific ignores:
 

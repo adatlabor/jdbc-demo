@@ -23,3 +23,7 @@ ojdbc_jar_file=jarsigner_env.JarSigner(target='web/ojdbc7.jar', source='lib/ojdb
 # Deploy .jar file and JDBC driver into 'web' directory
 jardeploy_env = Environment()
 jardeploy_env.Install(target='web/', source=jar_file)
+
+# Create lab5jdbc.zip, the file to submit
+release_env = Environment()
+release_env.Zip(target='lab5jdbc.zip', source=['src/', 'resources/', Glob('web/[!odjbc7.jar]*'), Glob('lib/[!odjbc7.jar]*')])
