@@ -18,7 +18,8 @@ jarsigner_build = Builder(action=jdk_bin_path+'jarsigner -keystore $KEYSTORE '
 jarsigner_env = Environment(BUILDERS={'JarSigner': jarsigner_build}, KEYSTORE='conf/webstart.keystore', TSA='http://timestamp.digicert.com/')
 # Sign .jar file
 jar_file=jarsigner_env.JarSigner(target='MySignedApplication.jar', source='unsigned.jar')
+ojdbc_jar_file=jarsigner_env.JarSigner(target='web/ojdbc7.jar', source='lib/ojdbc7.jar')
 
 # Deploy .jar file and JDBC driver into 'web' directory
 jardeploy_env = Environment()
-jardeploy_env.Install(target='web/', source=jar_file+['lib/ojdbc7.jar'])
+jardeploy_env.Install(target='web/', source=jar_file)

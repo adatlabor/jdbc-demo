@@ -13,5 +13,5 @@
 		<jar href="$$ojdbc_driver$$.jar" />
 		<jar href="MySignedApplication.jar" main="true" />
 	</resources>
-	<application-desc main-class="$$app_name$$" />
+	<application-desc />
 </jnlp>

@@ -9,6 +9,6 @@ neptun='aaa000'; # == Rapid user
 title='JDBC mérés';
 initpage_title='Minta kezdőoldal';
 desc='Próbaalkalmazás a Szoftver laboratórium 5. c. tárgy JDBC méréséhez';
-app_name='MyJwsApplication'; # Do not modify it!
+app_name='My Java Webstart JDBC Application';
 ojdbc_driver='ojdbc7'; # Without extension
 # ==================================>%============================================

@@ -53,3 +53,5 @@ do
     #echo -e $SED_PATTERN'\n';
     sed -i -e "$SED_PATTERN" "${FILEPATH}";
 done
+
+echo "Preprocessing done."
