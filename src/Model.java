@@ -9,6 +9,7 @@ package application;
 
 import java.sql.*;
 import java.util.Map;
+import java.util.Random;
 
 // Model class
 public class Model {
@@ -26,7 +27,7 @@ public class Model {
 
 	// Enum structure for Exercise #2
 	protected enum ModifyResult {
-		InsertOccured, UpdateOccured
+		InsertOccured, UpdateOccured, Error
 	}
 
 	// String containing last error message
@@ -89,7 +90,7 @@ public class Model {
 	 *            User who has access to the database
 	 * @param password
 	 *            User's password
-     * @return True on success, false on fail
+	 * @return True on success, false on fail
 	 */
 	public boolean connect(String userName, String password) {
 
@@ -128,13 +129,14 @@ public class Model {
 		} catch (SQLException e) {
 
 			// !TODO: More user friendly error handling
-			lastError = e.toString();
+			// use 'error' String beginning of the error string
+			lastError = "error ".concat(e.toString());
 			return false;
 
 		} catch (ClassNotFoundException e) {
-
 			// !TODO: More user friendly error handling
-			lastError = e.toString();
+			// use 'error' String beginning of the error string
+			lastError = "error ".concat(e.toString());
 			return false;
 
 		}
@@ -168,10 +170,9 @@ public class Model {
 			return result;
 
 		} catch (SQLException e) {
-
 			// !TODO: More user friendly error handling
-			lastError = e.toString();
-			
+			// use 'error' String beginning of the error string
+			lastError = "error ".concat(e.toString());			
 			return null;
 
 		}
@@ -179,31 +180,29 @@ public class Model {
 
 	/**
 	 * Method for Exercise #1
-	 * 
-     * @param keyword
-     *            Search keyword
-     *
+	 * @param Search keyword
 	 * @return Result of the query
 	 */
 	public ResultSet search(String keyword) {
-
+		//TODO task 1
 		return null;
-
 	}
 
 	/**
-	 * Method for Exercise #2
+	 * Method for Exercise #2-#3
 	 * 
 	 * @param data
 	 *            New or modified data
-     *
+	 * @param AutoCommit set the connection type (use default true, and 4.1 use false
 	 * @return Type of action has been performed
 	 */
-	public ModifyResult modifyData(Map data) {
-
-		return ModifyResult.UpdateOccured;
+	public ModifyResult modifyData(Map data, boolean AutoCommit) {
+		ModifyResult result = ModifyResult.Error;
+		//TODO task 2,3,4.1
+		return result;
 
 	}
+	
 
 	/**
 	 * Method for Exercise #4
@@ -211,9 +210,15 @@ public class Model {
 	 * @return True on success, false on fail
 	 */
 	public boolean commit() {
-
+		//TODO task 4
 		return false;
-
+	}
+	
+	/**
+	 * Method for Exercise #4
+	 */
+	public void rollback(){
+		//TODO task 4
 	}
 
 	/**
@@ -222,7 +227,7 @@ public class Model {
 	 * @return Result of the query
 	 */
 	public ResultSet getStatistics() {
-
+		//TODO task 5
 		return null;
 
 	}
