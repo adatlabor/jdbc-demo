@@ -16,12 +16,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.collections.FXCollections ?>
+<?import java.lang.String ?>
 
 
 <!-- All the GUI components -->
 <!-- Root (vertical box) layout -->
-<VBox fx:controller="application.Controller" xmlns:fx="http://javafx.com/fxml/1"
+<VBox fx:controller="application.View" xmlns:fx="http://javafx.com/fxml/1"
 	fx:id="rootLayout" alignment="CENTER" spacing="10" prefWidth="600"
 	prefHeight="460" minWidth="600" minHeight="460">
 
@@ -101,7 +106,63 @@
 
 			</Tab>
 
-			<!-- !TODO: This is the place you should add your other tabs (like edit) -->
+			<!-- !TODO: This is the place you should modify the tabs, you must review this -->
+			
+			<Tab fx:id="editTab" text=" Edit " closable="False">
+				<GridPane hgap="10" vgap="10">
+				
+			    <Label text="Sample:"
+			        GridPane.columnIndex="0" GridPane.rowIndex="1"/>			 
+			    <TextField fx:id="sampleID" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+			    
+			    <Label text="Sample:"
+			        GridPane.columnIndex="0" GridPane.rowIndex="2"/>			 	
+			    <ComboBox fx:id="comboSample" GridPane.columnIndex="1" GridPane.rowIndex="2">
+			      <items>
+			        <FXCollections fx:factory="observableArrayList">
+			          <String fx:value="Y" />
+			          <String fx:value="N" />
+			        </FXCollections>
+			      </items>
+			    </ComboBox>
+			    
+			    <HBox spacing="10" GridPane.columnSpan="2" GridPane.columnIndex="0" GridPane.rowIndex="3">
+
+						
+						<Button fx:id="commitButton" text="Commit" onAction="#commitEventHandler" disable="true"/>
+
+						
+						<Button fx:id="editButton" text="Edit" onAction="#editEventHandler" />
+
+				</HBox>
+			    
+				</GridPane>
+				
+			</Tab>
+			
+			<Tab fx:id="statisticsTab" text=" Statistics " closable="False">
+
+				<!-- Search panel -->
+				<VBox spacing="10">
+					<padding>
+						<Insets bottom="10" left="0" right="0" top="10.0" />
+					</padding>
+
+					
+					<HBox alignment="CENTER" spacing="10">
+						
+						<Button fx:id="statisticsButton" text="statistics" onAction="#statisticsEventHandler" />
+
+					</HBox>
+
+					<TableView fx:id="statisticsTable" editable="false">
+						<columns>
+						</columns>
+					</TableView>
+
+				</VBox>
+
+			</Tab>
 
 		</tabs>
 	</TabPane>

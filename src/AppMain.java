@@ -33,7 +33,7 @@ public class AppMain extends Application {
 			final VBox viewRoot = (VBox) loader.load();
 
 			// Get controller object and initialize it
-			final Controller controller = loader.getController();
+			final View controller = loader.getController();
 			controller.initData(primaryStage);
 
 			// Set scene (and the title of the window) and display it
@@ -56,7 +56,6 @@ public class AppMain extends Application {
 	 *            Command-line arguments
 	 */
 	public static void main(String[] args) {
-
 		launch(args);
 
 	}
@@ -66,7 +65,7 @@ public class AppMain extends Application {
 	 */
 	@Override
 	public void stop() {
-
+		
 		// ...
 
 	}
