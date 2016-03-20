@@ -1,3 +1,7 @@
+# Path of JDK's bin directory
+# jdk_bin_path = ""
+jdk_bin_path = "/usr/java/default/bin/"
+
 # Compile .java files, generate .class files
 javac_env = Environment(JAVACFLAGS='-encoding UTF-8', JAVACLASSPATH=['.', 'lib/ojdbc7.jar'])
 my_class_files=javac_env.Java('classes', 'src')
@@ -8,7 +12,7 @@ jar_env.Jar(target='unsigned.jar', source=my_class_files+['conf/MANIFEST.MF', 'r
 
 # Sign .jar file
 # Create builder (jarsigner)
-jarsigner_build = Builder(action='jarsigner -keystore $KEYSTORE '
+jarsigner_build = Builder(action=jdk_bin_path+'jarsigner -keystore $KEYSTORE '
     '-storepass webstart -tsa $TSA -signedjar $TARGET $SOURCE webstart')
 # Set parameters
 jarsigner_env = Environment(BUILDERS={'JarSigner': jarsigner_build}, KEYSTORE='conf/webstart.keystore', TSA='http://timestamp.digicert.com/')
