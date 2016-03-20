@@ -2,7 +2,7 @@
 <jnlp codebase="http://rapid.eik.bme.hu/~$$neptun$$/jdbc" href="application.jnlp">
 	<information>
 		<title>$$app_name$$</title>
-		<vendor>Gasa</vendor>
+		<vendor>$$student_name$$</vendor>
 		<icon href="logo.png" kind="default" />
 	</information>
 	<security>
