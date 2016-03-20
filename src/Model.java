@@ -1,7 +1,7 @@
 /**
  * This JavaFX skeleton is provided for the Software Laboratory 5 course. Its structure
  * should provide a general guideline for the students.
- * As suggested by the JavaFX model, we'll have a GUI (view), 
+ * As suggested by the JavaFX model, we'll have a GUI (view),
  * a controller class and a model (this one).
  */
 
@@ -41,7 +41,7 @@ public class Model {
 
 	/**
 	 * Gives product name of the database
-	 * 
+	 *
 	 * @return Product name of the database
 	 */
 	public String getDatabaseProductName() {
@@ -52,7 +52,7 @@ public class Model {
 
 	/**
 	 * Gives product version of the database
-	 * 
+	 *
 	 * @return Product version of the database
 	 */
 	public String getDatabaseProductVersion() {
@@ -63,7 +63,7 @@ public class Model {
 
 	/**
 	 * Gives database URL
-	 * 
+	 *
 	 * @return Database URL
 	 */
 	public String getDatabaseUrl() {
@@ -74,18 +74,18 @@ public class Model {
 
 	/**
 	 * Gives the message of last error
-	 * 
+	 *
 	 * @return Message of last error
 	 */
 	public String getLastError() {
-		
+
 		return lastError;
-		
+
 	}
 
 	/**
 	 * Tries to connect to the database
-	 * 
+	 *
 	 * @param userName
 	 *            User who has access to the database
 	 * @param password
@@ -145,7 +145,7 @@ public class Model {
 
 	/**
 	 * Tests the database connection by submitting a query
-	 * 
+	 *
 	 * @return True on success, false on fail
 	 */
 	public String testConnection() {
@@ -172,7 +172,7 @@ public class Model {
 		} catch (SQLException e) {
 			// !TODO: More user friendly error handling
 			// use 'error' String beginning of the error string
-			lastError = "error ".concat(e.toString());			
+			lastError = "error ".concat(e.toString());
 			return null;
 
 		}
@@ -190,7 +190,7 @@ public class Model {
 
 	/**
 	 * Method for Exercise #2-#3
-	 * 
+	 *
 	 * @param data
 	 *            New or modified data
 	 * @param AutoCommit set the connection type (use default true, and 4.1 use false
@@ -202,18 +202,18 @@ public class Model {
 		return result;
 
 	}
-	
+
 
 	/**
 	 * Method for Exercise #4
-	 * 
+	 *
 	 * @return True on success, false on fail
 	 */
 	public boolean commit() {
 		//TODO task 4
 		return false;
 	}
-	
+
 	/**
 	 * Method for Exercise #4
 	 */
@@ -223,7 +223,7 @@ public class Model {
 
 	/**
 	 * Method for Exercise #5
-	 * 
+	 *
 	 * @return Result of the query
 	 */
 	public ResultSet getStatistics() {

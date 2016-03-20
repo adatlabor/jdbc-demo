@@ -18,10 +18,10 @@ public class AppMain extends Application {
 
 	/**
 	 * Display GUI window
-	 * 
+	 *
 	 * @param Stage
 	 *            The top level JavaFX container
-	 * 
+	 *
 	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -51,7 +51,7 @@ public class AppMain extends Application {
 
 	/**
 	 * Entry point for the application
-	 * 
+	 *
 	 * @param args
 	 *            Command-line arguments
 	 */
@@ -65,7 +65,7 @@ public class AppMain extends Application {
 	 */
 	@Override
 	public void stop() {
-		
+
 		// ...
 
 	}

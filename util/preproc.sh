@@ -44,12 +44,12 @@ FILEPATHS=('./web/index.html' './conf/MANIFEST.MF' './web/application.jnlp');
 for FILEPATH in "${FILEPATHS[@]}"
 do
     SED_PATTERN="";
-    
+
     for i in {0..7}
     do
         SED_PATTERN+="s/"${SED_PATTERNS[$i]}"/"${PARAMS[$i]}"/g;";
     done
-    
+
     #echo -e $SED_PATTERN'\n';
     sed -i -e "$SED_PATTERN" "${FILEPATH}";
 done

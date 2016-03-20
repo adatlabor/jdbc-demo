@@ -16,7 +16,7 @@ OJDBC7_PATH=/oracle/product/12.1.0/dbhome_1/jdbc/lib/ojdbc7.jar
 TEMPFILE=$( mktemp -t lab5jdbc.XXXXXXXXX )
 wget ${DOWNLOAD_URL} -O $TEMPFILE
 if [ "$?" != "0" ] ; then
-  echo 
+  echo
   echo !!! Failed to download files !!!
   echo
   exit 1

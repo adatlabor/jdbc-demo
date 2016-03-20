@@ -9,11 +9,11 @@ public class Controller {
 	//model instance, controller communicate just with the model
 	//Don't use javaFX imports classes, etc.
 	private Model model;
-	
+
 	public Controller(){
 		model = new Model();
 	}
-	
+
 	/**
 	 * Connect to DB with model
 	 * @param userName Your DB username
@@ -21,7 +21,7 @@ public class Controller {
 	 * @param log Log container
 	 * @return true if connect success else false
 	 */
-	public boolean connect(String userName, String password, List<String> log){		
+	public boolean connect(String userName, String password, List<String> log){
 		if (model.connect(userName, password)) {
 			// Test the connection
 			String results = model.testConnection();
@@ -38,7 +38,7 @@ public class Controller {
 		log.add(model.getLastError());
 		return false;
 	}
-	
+
 	/**
 	 * Task 1: Search with keyword
 	 * USE: model.search
@@ -52,7 +52,7 @@ public class Controller {
 		//TODO Task 1
 		return result;
 	}
-	
+
 	/**
 	 * Task 2 and 3: Modify data (task 2) and (before) verify(task 3) it, and disable autocommit (task 4.1)
 	 * USE: model.modifyData and Model.ModifyResult
@@ -65,9 +65,9 @@ public class Controller {
 		Model.ModifyResult result = Model.ModifyResult.Error;
 		//TODO Task 2,3,4.1
 		return true;
-		
+
 	}
-	
+
 	/**
 	 * Task 5: get statistics
 	 * USE: model.getStatistics
@@ -80,7 +80,7 @@ public class Controller {
 		//TODO task 5
 		return result;
 	}
-	
+
 	/**
 	 * Commit all uncommitted changes
 	 * USE: model.commit

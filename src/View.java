@@ -1,7 +1,7 @@
 /**
  * This JavaFX skeleton is provided for the Software Laboratory 5 course. Its structure
  * should provide a general guideline for the students.
- * As suggested by the JavaFX model, we'll have a GUI (view), 
+ * As suggested by the JavaFX model, we'll have a GUI (view),
  * a controller class (this one) and a model.
  */
 
@@ -33,11 +33,11 @@ import javafx.stage.Stage;
 
 // Controller class
 public class View {
-	
+
 	private Controller controller;
-	
-	
-	
+
+
+
 	@FXML
 	private ComboBox<String> comboSample;
 
@@ -70,12 +70,12 @@ public class View {
 	private Button statisticsButton;
 	@FXML
 	private Button searchButton;
-	
+
 
 	// Labels
 	@FXML
 	private Label connectionStateLabel;
-	
+
 	// Tabs
 	@FXML
 	private Tab editTab;
@@ -85,19 +85,19 @@ public class View {
 	private Tab logTab;
 	@FXML
 	private Tab searchTab;
-	
+
 
 	// Tables
 	@FXML
 	private TableView searchTable;
 	@FXML
 	private TableView statisticsTable;
-	
+
 
 	// Titles and map keys of table columns search
 	String searchColumnTitles[] = new String[] { "COL1", "COL2", "COL3", "COL4" };
 	String searchColumnKeys[] = new String[] { "col1", "col2", "col3", "col4" };
-	
+
 	// Titles and map keys of table columns statistics
 	String statisticsColumnTitles[] = new String[] { "COL1", "COL2", "COL3"};
 	String statisticsColumnKeys[] = new String[] { "col1", "col2", "col3" };
@@ -135,7 +135,7 @@ public class View {
 			// Add column to the table
 			searchTable.getColumns().add(column);
 		}
-		
+
 		// Create table (statistics table) columns
 		for (int i = 0; i < statisticsColumnTitles.length; i++) {
 			// Create table column
@@ -152,7 +152,7 @@ public class View {
 
 	/**
 	 * Initialize controller with data from AppMain (now only sets stage)
-	 * 
+	 *
 	 * @param stage
 	 *            The top level JavaFX container
 	 */
@@ -168,7 +168,7 @@ public class View {
 
 	/**
 	 * This is called whenever the connect button is pressed
-	 * 
+	 *
 	 * @param event
 	 *            Contains details about the JavaFX event
 	 */
@@ -176,15 +176,15 @@ public class View {
 	private void connectEventHandler(ActionEvent event) {
 		//Log container
 		List<String> log = new ArrayList<>();
-		
+
 		// Controller connect method will do everything for us, just call
-		// it		
+		// it
 		if (controller.connect(usernameField.getText(), passwordField.getText(), log))
 		{
 			connectionStateLabel.setText("Connection created");
 			connectionStateLabel.setTextFill(Color.web("#009900"));
 		}
-		
+
 		//Write log to gui
 		for (String string : log) logMsg(string);
 	}
@@ -200,7 +200,7 @@ public class View {
 	private void searchEventHandler(ActionEvent event) {
 		//always use log
 		List<String> log = new ArrayList<>();
-		
+
 		// Get a reference to the row list of search table
 		ObservableList<Map> allRows = searchTable.getItems();
 
@@ -217,15 +217,15 @@ public class View {
 			dataRow.put(searchColumnKeys[i], sampleRow[i]);
 
 		}
-		
+
 		// Add the row to the table
 		allRows.add(dataRow);
 
 		//and write it to gui
 		for (String string : log) logMsg(string);
 	}
-	
-	
+
+
 	/**
 	 * This is called whenever the edit button is pressed
 	 * Task 2,3,4
@@ -236,11 +236,11 @@ public class View {
 	@FXML
 	private void editEventHandler(ActionEvent event) {
 		List<String> log = new ArrayList<>();
-		//TODO task 2,3,4		
+		//TODO task 2,3,4
 		for (String string : log) logMsg(string);
 	}
-	
-	
+
+
 	/**
 	 * This is called whenever the commit button is pressed
 	 * Task 4
@@ -258,9 +258,9 @@ public class View {
 		//TODO task 4
 		for (String string : log) logMsg(string);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * This is called whenever the statistics button is pressed
 	 * Task 5
@@ -277,7 +277,7 @@ public class View {
 
 	/**
 	 * Appends the message (with a line break added) to the log
-	 * 
+	 *
 	 * @param message
 	 *            The message to be logged
 	 */
