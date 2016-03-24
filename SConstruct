@@ -19,9 +19,15 @@ jar_env = Environment()
 # This should not break build-dependency handling as inner class files
 # are always re-generated when the Java source file is being re-compiled.
 # If in doubt, run "scons -c" first, and after backing up classes/ dir, "rm -rf classes/"
+#
+# jmarton, 20160324
+# add resources explicitly by globbing.
+# Note: Jar builder of SCons should probably have the option
+# source_scanner = SCons.Defaults.DirScanner
+# to allow for resource directory inclusion.
 my_classes_dir = jar_env.Dir('classes')
 my_classes_dir.attributes.java_classdir = jar_env.Dir('classes')
-jar_env.Jar(target='unsigned.jar', source=[my_classes_dir, 'conf/MANIFEST.MF', 'resources/'] )
+jar_env.Jar(target='unsigned.jar', source=[my_classes_dir, 'conf/MANIFEST.MF'] + Glob('resources/*') )
 
 # Sign .jar file
 # Create builder (jarsigner)
