@@ -4,13 +4,14 @@ jdk_bin_path = "/usr/java/default/bin/"
 
 # Compile .java files, generate .class files
 javac_env = Environment(JAVACFLAGS='-encoding UTF-8', JAVACLASSPATH=['.', 'lib/ojdbc7.jar'])
-my_class_files=javac_env.Java('classes', 'src')
+my_class_files = javac_env.Java('classes', 'src')
 
 # Generate an unsigned .jar file from .class files
 jar_env = Environment()
 #jar_env.Jar(target='unsigned.jar', source=my_class_files+['conf/MANIFEST.MF', 'resources/'] )
 # jmarton, 20150414:
-# Scons 2.3.4, 2.4.1 sometimes fails to recognize a few Java inner class files generated (see classes/ after "scons -c").
+# Scons 2.3.4, 2.4.1 sometimes fails to recognize a few Java inner class files generated
+# (see classes/ after "scons -c").
 #
 # jmarton, 20160321:
 # So we add classes dir explicitly to the sources and set .attributes.java_classdir,
@@ -27,17 +28,22 @@ jar_env = Environment()
 # to allow for resource directory inclusion.
 my_classes_dir = jar_env.Dir('classes')
 my_classes_dir.attributes.java_classdir = jar_env.Dir('classes')
-jar_env.Jar(target='unsigned.jar', source=[my_classes_dir, 'conf/MANIFEST.MF'] + Glob('resources/*') )
+jar_env.Jar(target='unsigned.jar',
+            source=[my_classes_dir, 'conf/MANIFEST.MF'] + Glob('resources/*'),
+           )
 
 # Sign .jar file
 # Create builder (jarsigner)
 jarsigner_build = Builder(action=jdk_bin_path+'jarsigner -keystore $KEYSTORE '
-    '-storepass webstart -tsa $TSA -signedjar $TARGET $SOURCE webstart')
+                          '-storepass webstart -tsa $TSA -signedjar $TARGET $SOURCE webstart')
 # Set parameters
-jarsigner_env = Environment(BUILDERS={'JarSigner': jarsigner_build}, KEYSTORE='conf/webstart.keystore', TSA='http://timestamp.digicert.com/')
+jarsigner_env = Environment(BUILDERS={'JarSigner': jarsigner_build},
+                            KEYSTORE='conf/webstart.keystore',
+                            TSA='http://timestamp.digicert.com/',
+                           )
 # Sign .jar file
-jar_file=jarsigner_env.JarSigner(target='MySignedApplication.jar', source='unsigned.jar')
-ojdbc_jar_file=jarsigner_env.JarSigner(target='web/ojdbc7.jar', source='lib/ojdbc7.jar')
+jar_file = jarsigner_env.JarSigner(target='MySignedApplication.jar', source='unsigned.jar')
+ojdbc_jar_file = jarsigner_env.JarSigner(target='web/ojdbc7.jar', source='lib/ojdbc7.jar')
 
 # Deploy .jar file and JDBC driver into 'web' directory
 jardeploy_env = Environment()
@@ -45,4 +51,8 @@ jardeploy_env.Install(target='web/', source=jar_file)
 
 # Create lab5jdbc.zip, the file to submit
 release_env = Environment()
-release_env.Zip(target='lab5jdbc.zip', source=['src/', 'resources/', Glob('web/[!odjbc7.jar]*'), Glob('lib/[!odjbc7.jar]*')])
+release_env.Zip(target='lab5jdbc.zip',
+                source=['src/', 'resources/',
+                        Glob('web/[!odjbc7.jar]*'), Glob('lib/[!odjbc7.jar]*'),
+                       ],
+               )
