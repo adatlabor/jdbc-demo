@@ -1,9 +1,10 @@
 # Path of JDK's bin directory
 # jdk_bin_path = ""
 jdk_bin_path = "/usr/java/default/bin/"
+jdbc_driver_jarname = 'ojdbc7.jar'
 
 # Compile .java files, generate .class files
-javac_env = Environment(JAVACFLAGS='-encoding UTF-8', JAVACLASSPATH=['.', 'lib/ojdbc7.jar'])
+javac_env = Environment(JAVACFLAGS='-encoding UTF-8', JAVACLASSPATH=['.', 'lib/' + jdbc_driver_jarname])
 my_class_files = javac_env.Java('classes', 'src')
 
 # Generate an unsigned .jar file from .class files
@@ -43,16 +44,20 @@ jarsigner_env = Environment(BUILDERS={'JarSigner': jarsigner_build},
                            )
 # Sign .jar file
 jar_file = jarsigner_env.JarSigner(target='MySignedApplication.jar', source='unsigned.jar')
-ojdbc_jar_file = jarsigner_env.JarSigner(target='web/ojdbc7.jar', source='lib/ojdbc7.jar')
+ojdbc_jar_file = jarsigner_env.JarSigner(target='web/' + jdbc_driver_jarname, source='lib/' + jdbc_driver_jarname)
 
 # Deploy .jar file and JDBC driver into 'web' directory
 jardeploy_env = Environment()
 jardeploy_env.Install(target='web/', source=jar_file)
 
 # Create lab5jdbc.zip, the file to submit
+# Exclude {web,lib}/ojdbc7.jar.
+# Note: Glob() in SCons 2.4.1 supports exclude that is being worked around for 2.3.x
 release_env = Environment()
 release_env.Zip(target='lab5jdbc.zip',
                 source=['src/', 'resources/',
-                        Glob('web/[!odjbc7.jar]*'), Glob('lib/[!odjbc7.jar]*'),
+                        [x for x in Glob('web/*', strings=True) + Glob('lib/*', strings=True)
+                         if not x.endswith('/' + jdbc_driver_jarname)
+                        ],
                        ],
                )
