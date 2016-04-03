@@ -180,7 +180,7 @@ public class Model {
 
 	/**
 	 * Method for Exercise #1
-	 * @param Search keyword
+	 * @param keyword Search keyword
 	 * @return Result of the query
 	 */
 	public ResultSet search(String keyword) {

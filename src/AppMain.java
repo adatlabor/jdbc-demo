@@ -19,7 +19,7 @@ public class AppMain extends Application {
 	/**
 	 * Display GUI window
 	 *
-	 * @param Stage
+	 * @param primaryStage
 	 *            The top level JavaFX container
 	 *
 	 */
