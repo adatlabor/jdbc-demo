@@ -131,7 +131,7 @@ public class View {
 			// Set map factory
 			column.setCellValueFactory(new MapValueFactory(searchColumnKeys[i]));
 			// Set width of table column
-			column.prefWidthProperty().bind(searchTable.widthProperty().divide(4));
+			column.prefWidthProperty().bind(searchTable.widthProperty().divide(searchColumnTitles.length));
 			// Add column to the table
 			searchTable.getColumns().add(column);
 		}
@@ -143,7 +143,7 @@ public class View {
 			// Set map factory
 			column.setCellValueFactory(new MapValueFactory(statisticsColumnKeys[i]));
 			// Set width of table column
-			column.prefWidthProperty().bind(statisticsTable.widthProperty().divide(3));
+			column.prefWidthProperty().bind(statisticsTable.widthProperty().divide(statisticsColumnTitles.length));
 			// Add column to the table
 			statisticsTable.getColumns().add(column);
 		}
