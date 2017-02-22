@@ -4,7 +4,7 @@ jdk_bin_path = "/usr/java/default/bin/"
 jdbc_driver_jarname = 'ojdbc7.jar'
 
 # Compile .java files, generate .class files
-javac_env = Environment(JAVACFLAGS='-encoding UTF-8', JAVACLASSPATH=['.', 'lib/' + jdbc_driver_jarname])
+javac_env = Environment(JAVACFLAGS='-encoding UTF-8', JAVACLASSPATH=['.'] + Glob(pattern='lib/*.jar', strings=True))
 my_class_files = javac_env.Java('classes', 'src')
 
 # Generate an unsigned .jar file from .class files
