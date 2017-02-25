@@ -150,19 +150,18 @@ public class Model {
 			// Create SQL query and execute it
 			// If user input has to be processed, use PreparedStatement instead!
 			Statement stmt = connection.createStatement();
-			ResultSet rset = stmt.executeQuery("SELECT count(*) FROM oktatas.igazolvanyok");
+			try (ResultSet rset = stmt.executeQuery("SELECT count(*) FROM oktatas.igazolvanyok")) {
+				// Process the results
+				String result = null;
+				while (rset.next()) {
+					result = String.format("Total number of rows in 'Igazolvanyok' table in 'Oktatas' schema: %s",
+							rset.getString(1));
+				}
 
-			// Process the results
-			String result = null;
-			while (rset.next()) {
-				result = String.format("Total number of rows in 'Igazolvanyok' table in 'Oktatas' schema: %s",
-						rset.getString(1));
+				// Close statement
+
+				return result;
 			}
-
-			// Close statement
-			stmt.close();
-
-			return result;
 
 		} catch (SQLException e) {
 			// !TODO: More user friendly error handling
