@@ -1,7 +1,8 @@
 package application;
 
 /**
- * Class for displaying an item in the ComboBox.
+ * Class for displaying on item in a combobox. 
+ * @param <T> The type of the value of the item.
  */
 public class ComboBoxItem<T> {
 	private String label;
