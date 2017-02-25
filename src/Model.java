@@ -104,11 +104,6 @@ public class Model {
 					// Load the specified database driver
 					Class.forName(driverName);
 
-					// Driver is for Oracle 12cR1 (certified with JDK 7 and JDK
-					// 8)
-					if (java.lang.System.getProperty("java.vendor").equals("Microsoft Corp.")) {
-						DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
-					}
 				} else {
 
 					connection.close();
