@@ -38,7 +38,7 @@ public class AppMain extends Application implements EventHandler<WindowEvent> {
 		try {
 
 			// Create a loader object and load View and Controller
-			final FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("View.fxml"));
+			final FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/View.fxml"));
 			final VBox viewRoot = (VBox) loader.load();
 			// Get controller object
 			controller = loader.getController();

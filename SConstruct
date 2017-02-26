@@ -1,14 +1,14 @@
 # Path of JDK's bin directory
 # jdk_bin_path = ""
-jdk_bin_path = "/usr/java/default/bin/"
+jdk_bin_path = "\"C:\\Program Files\\Java\\jdk1.8.0_121\\bin\\"
 jdbc_driver_jarname = 'ojdbc7.jar'
 
 # Compile .java files, generate .class files
-javac_env = Environment(JAVACFLAGS='-encoding UTF-8', JAVACLASSPATH=['.'] + Glob(pattern='lib/*.jar', strings=True))
+javac_env = Environment(JAVACFLAGS='-encoding UTF-8', JAVACLASSPATH=['.'] + Glob(pattern='lib/*.jar', strings=True), ENV = { 'PATH': [jdk_bin_path] })
 my_class_files = javac_env.Java('classes', 'src')
 
 # Generate an unsigned .jar file from .class files
-jar_env = Environment()
+jar_env = Environment(ENV = { 'PATH': [jdk_bin_path] })
 #jar_env.Jar(target='unsigned.jar', source=my_class_files+['conf/MANIFEST.MF', 'resources/'] )
 # jmarton, 20150414:
 # Scons 2.3.4, 2.4.1 sometimes fails to recognize a few Java inner class files generated
@@ -35,12 +35,12 @@ jar_env.Jar(target='unsigned.jar',
 
 # Sign .jar file
 # Create builder (jarsigner)
-jarsigner_build = Builder(action=jdk_bin_path+'jarsigner -keystore $KEYSTORE '
+jarsigner_build = Builder(action=jdk_bin_path+'jarsigner\" -keystore $KEYSTORE '
                           '-storepass webstart -tsa $TSA -signedjar $TARGET $SOURCE webstart')
 # Set parameters
 jarsigner_env = Environment(BUILDERS={'JarSigner': jarsigner_build},
                             KEYSTORE='conf/webstart.keystore',
-                            TSA='http://timestamp.digicert.com/',
+                            TSA='http://timestamp.digicert.com/'
                            )
 # Sign .jar file
 jar_file = jarsigner_env.JarSigner(target='MySignedApplication.jar', source='unsigned.jar')
@@ -57,7 +57,7 @@ release_env = Environment()
 release_env.Zip(target='lab5jdbc.zip',
                 source=['src/', 'resources/',
                         [x for x in Glob('web/*', strings=True) + Glob('lib/*', strings=True)
-                         if not x.endswith('/' + jdbc_driver_jarname)
+                         if not x.endswith(jdbc_driver_jarname)
                         ],
                        ],
                )
