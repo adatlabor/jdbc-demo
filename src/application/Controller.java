@@ -28,7 +28,6 @@ import model.Video;
  * Class for implementing the logic.
  */
 public class Controller implements Initializable {
-	// TODO: skeletons for all task types
 	private DataAccessLayer<Video, Member> dal;
 
 	@FXML
@@ -57,17 +56,21 @@ public class Controller implements Initializable {
 
 	@FXML
 	public void connectEventHandler(ActionEvent event) {
+		//Getting the input from the UI.
 		String username = usernameField.getText();
 		String password = passwordField.getText();
 
 		try {
+			//Connect to the database, and update the UI
 			dal.connect(username, password);
 			connectionStateLabel.setText("Connection created!");
 			connectionStateLabel.setTextFill(Paint.valueOf("green"));
 		} catch (ClassNotFoundException e) {
+			//Driver is not found
 			connectionStateLabel.setText("JDBC driver not found!");
 			connectionStateLabel.setTextFill(Paint.valueOf("red"));
 		} catch (CouldNotConnectException e) {
+			//Could not connect, e.g. invalid username or password
 			connectionStateLabel.setText("Could not connect to the server!");
 			connectionStateLabel.setTextFill(Paint.valueOf("red"));
 		}
@@ -75,6 +78,7 @@ public class Controller implements Initializable {
 
 	@FXML
 	public void searchEventHandler() {
+		//TODO: replace this query with your solution.
 		try {
 			List<Person> people = dal.sampleQuery();
 			searchTable.setItems(FXCollections.observableArrayList(people));
@@ -85,24 +89,27 @@ public class Controller implements Initializable {
 
 	@FXML
 	public void commitEventHandler() {
-
+		//TODO: handle the click of the commit button.
 	}
 
 	@FXML
 	public void editEventHandler() {
-
+		//TODO: handle the click of the edit button
 	}
 
 	@FXML
 	public void statisticsEventHandler() {
-
+		//TODO: handle the click of the statistics button
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO: initalize property-value factories
+		//EXAMPLE: sampleCombo stores two strings.
 		sampleCombo.getItems().add(new ComboBoxItem<String>("Value A", "a"));
 		sampleCombo.getItems().add(new ComboBoxItem<String>("Value B", "b"));
+		
+		//EXAMPLE: this is how we bind the private variables to a data cell
 		nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 		identityNumberColumn.setCellValueFactory(new PropertyValueFactory<>("identityNumber"));
 	}

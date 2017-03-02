@@ -18,7 +18,7 @@ import model.Person;
 import model.Video;
 
 /**
- * Initial implementation for the DataAccessLayer for the 33-VIDEO exercises.
+ * Initial implementation for the DataAccessLayer for the 33-VIDEO exercise.
  */
 public class VideoDal implements DataAccessLayer<Video, Member> {
 	private Connection connection;

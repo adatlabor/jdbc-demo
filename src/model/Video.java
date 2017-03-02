@@ -4,6 +4,10 @@ import java.time.LocalDate;
 
 import dal.exceptions.ValidationException;
 
+/**
+ * Model class for storing the data for 1st - 4th tasks.
+ *
+ */
 public class Video {
 	private Integer videoId;
 	private String title;
@@ -58,6 +62,10 @@ public class Video {
 	public void setAppearance(LocalDate appearance) {
 		this.appearance = appearance;
 	}
+	
+	public void parseAppearance(String apperance) {
+		//TODO: validate
+	}
 
 	public Integer getDuration() {
 		return duration;
@@ -67,7 +75,7 @@ public class Video {
 		this.duration = duration;
 	}
 	
-	public void setDuration(String duration) throws ValidationException {
+	public void parseDuration(String duration) throws ValidationException {
 		//TODO: validate
 	}
 

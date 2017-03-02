@@ -9,8 +9,8 @@ package application;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.VBox;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -22,7 +22,6 @@ public class AppMain extends Application implements EventHandler<WindowEvent> {
 	/**
 	 * 
 	 */
-	@SuppressWarnings("unused")
 	private Controller controller;
 
 	/**
@@ -38,7 +37,7 @@ public class AppMain extends Application implements EventHandler<WindowEvent> {
 		try {
 
 			// Create a loader object and load View and Controller
-			final FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/View.fxml"));
+			final FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("View.fxml"));
 			final VBox viewRoot = (VBox) loader.load();
 			// Get controller object
 			controller = loader.getController();
@@ -72,11 +71,12 @@ public class AppMain extends Application implements EventHandler<WindowEvent> {
 	 */
 	@Override
 	public void stop() {
-
-		// ...
-
+		controller.disconnect();
 	}
 
+	/**
+	 * Handling the closing of the main window.
+	 */
 	@Override
 	public void handle(WindowEvent event) {
 		// TODO Task 4.2

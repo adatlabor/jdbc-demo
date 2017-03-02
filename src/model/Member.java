@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * Model class for storing data for the 5th class.
+ *
+ */
 public class Member {
 	private String name;
 	private String address;
