@@ -115,12 +115,7 @@ public class Controller implements Initializable {
 	}
 
 	public void disconnect() {
-		try {
-			dal.commit();
-			dal.disconnect();
-		} catch (NotConnectedException e) {
-			// Nothing to deal with
-		}
+		dal.disconnect();
 	}
 
 }

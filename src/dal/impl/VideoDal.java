@@ -89,7 +89,6 @@ public class VideoDal implements DataAccessLayer<Video, Member> {
 
 	@Override
 	public void disconnect() {
-		
 	}
 
 	@Override
