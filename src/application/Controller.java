@@ -23,12 +23,13 @@ import javafx.scene.paint.Paint;
 import model.Member;
 import model.Person;
 import model.Video;
+import model.VideoHeader;
 
 /**
  * Class for implementing the logic.
  */
 public class Controller implements Initializable {
-	private DataAccessLayer<Video, Member> dal;
+	private DataAccessLayer<VideoHeader, Video, Member> dal;
 
 	@FXML
 	TextField usernameField;

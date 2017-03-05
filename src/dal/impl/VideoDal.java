@@ -16,11 +16,12 @@ import dal.exceptions.NotConnectedException;
 import model.Member;
 import model.Person;
 import model.Video;
+import model.VideoHeader;
 
 /**
  * Initial implementation for the DataAccessLayer for the 33-VIDEO exercise.
  */
-public class VideoDal implements DataAccessLayer<Video, Member> {
+public class VideoDal implements DataAccessLayer<VideoHeader, Video, Member> {
 	private Connection connection;
 	protected static final String driverName = "oracle.jdbc.driver.OracleDriver";
 	protected static final String databaseUrl = "jdbc:oracle:thin:@rapid.eik.bme.hu:1521:szglab";
@@ -51,7 +52,7 @@ public class VideoDal implements DataAccessLayer<Video, Member> {
 	}
 
 	@Override
-	public List<Video> search(String keyword) throws NotConnectedException {
+	public List<VideoHeader> search(String keyword) throws NotConnectedException {
 		checkConnected();
 		return null;
 	}

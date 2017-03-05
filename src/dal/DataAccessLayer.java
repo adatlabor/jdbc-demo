@@ -13,7 +13,7 @@ import model.Person;
  * @param <T1> The model class for storing the data for 1-4 exercises.
  * @param <T2> The model class for storing the data for the 5 exercise.
  */
-public interface DataAccessLayer<T1, T2> {
+public interface DataAccessLayer<T1, T2, T3> {
 	/**
 	 * Connect to the database.
 	 * @param username The Oracle username
@@ -41,7 +41,7 @@ public interface DataAccessLayer<T1, T2> {
 	 * @return List of the entities.
 	 * @throws NotConnectedException Thrown when the user is not connected to the database.
 	 */
-	List<T2> getStatistics() throws NotConnectedException;
+	List<T3> getStatistics() throws NotConnectedException;
 	
 	/**
 	 * Method for solving the second exercise.
@@ -51,7 +51,7 @@ public interface DataAccessLayer<T1, T2> {
 	 * @throws NotConnectedException Thrown when the user is not connected to the database. 
 	 * @throws EntityNotFoundException Thrown when the foreign key is invalid.
 	 */
-	ActionResult insertOrUpdate(T1 entity, Integer foreignKey) throws NotConnectedException, EntityNotFoundException;
+	ActionResult insertOrUpdate(T2 entity, Integer foreignKey) throws NotConnectedException, EntityNotFoundException;
 	
 	/**
 	 * Method for solving the fourth exercise.
