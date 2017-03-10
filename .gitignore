@@ -34,7 +34,6 @@ hs_err_pid*
 src/model/*.java
 !src/model/Person.java
 
-src/dal/exceptions/
 src/dal/impl/
 
 src/application/Controller.java
