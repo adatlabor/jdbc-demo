@@ -7,6 +7,7 @@
 student_name='Hallgató';
 neptun='aaa000'; # == Rapid user, lowercase, please!
 title='JDBC mérés';
+exercise='VIDEO'; # == your exercise name, with uppercase
 initpage_title='Minta kezdőoldal';
 desc='Próbaalkalmazás a Szoftver laboratórium 5. c. tárgy JDBC méréséhez';
 app_name='My Java Webstart JDBC Application';
