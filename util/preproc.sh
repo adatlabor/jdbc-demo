@@ -27,6 +27,18 @@ HERE
   exit 2
 fi
 
+#download custom files for given exercise
+DOWNLOAD_URL=http://db.bme.hu/r/jdbc/${exercise}.zip;
+TEMPFILE=$( mktemp -t lab5jdbc.XXXXXXXXX )
+wget ${DOWNLOAD_URL} -O $TEMPFILE --no-check-certificate
+if [ "$?" != "0" ] ; then
+  echo
+  echo !!! Failed to download files !!!
+  echo
+  exit 1
+fi
+unzip $TEMPFILE
+rm $TEMPFILE
 
 # Sed patterns
 declare -a SED_PATTERNS;
