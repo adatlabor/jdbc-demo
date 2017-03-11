@@ -10,8 +10,9 @@ import model.Person;
 /**
  * Data access layer for JDBC laboratory.
  *
- * @param <T1> The model class for storing the data for 1-4 exercises.
- * @param <T2> The model class for storing the data for the 5 exercise.
+ * @param <T1> The model class for storing the data for first exercise.
+ * @param <T2> The model class for storing the data for the 2-3-4 exercises.
+ * @param <T3> The model class for storing the data for the fifth exercise.
  */
 public interface DataAccessLayer<T1, T2, T3> {
 	/**
