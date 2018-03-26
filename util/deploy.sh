@@ -5,8 +5,7 @@ REPOSITORY_NAME=jdbc-demo
 BRANCH_NAME=master
 DOWNLOAD_BASE=https://github.com/adatlabor
 
-#DOWNLOAD_URL=${DOWNLOAD_BASE}/${REPOSITORY_NAME}/archive/${BRANCH_NAME}.zip
-DOWNLOAD_URL=https://www.db.bme.hu/files/szoftlab5/jdbc/master.zip
+DOWNLOAD_URL=${DOWNLOAD_BASE}/${REPOSITORY_NAME}/archive/${BRANCH_NAME}.zip
 ARCHIVE_DIRNAME=${REPOSITORY_NAME}-${BRANCH_NAME}
 TARGET_DIRNAME=jdbc
 WEB_DIRNAME=jdbc
@@ -26,7 +25,7 @@ HERE
 fi
 
 TEMPFILE=$( mktemp -t lab5jdbc.XXXXXXXXX )
-wget --no-check-certificate ${DOWNLOAD_URL} -O $TEMPFILE
+wget ${DOWNLOAD_URL} -O $TEMPFILE
 if [ "$?" != "0" ] ; then
   echo
   echo !!! Failed to download files !!!
