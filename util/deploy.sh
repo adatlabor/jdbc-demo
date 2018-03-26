@@ -5,6 +5,12 @@ REPOSITORY_NAME=jdbc-demo
 BRANCH_NAME=master
 DOWNLOAD_BASE=https://github.com/adatlabor
 
+if [ $INSECURE ]; then
+  echo '/!\ Using insecure mode, be careful what you wish for!'
+  WGET_OPTS=--no-check-certificate
+fi
+
+
 DOWNLOAD_URL=${DOWNLOAD_BASE}/${REPOSITORY_NAME}/archive/${BRANCH_NAME}.zip
 ARCHIVE_DIRNAME=${REPOSITORY_NAME}-${BRANCH_NAME}
 TARGET_DIRNAME=jdbc
@@ -25,7 +31,7 @@ HERE
 fi
 
 TEMPFILE=$( mktemp -t lab5jdbc.XXXXXXXXX )
-wget ${DOWNLOAD_URL} -O $TEMPFILE
+wget ${WGET_OPTS} ${DOWNLOAD_URL} -O $TEMPFILE
 if [ "$?" != "0" ] ; then
   echo
   echo !!! Failed to download files !!!
