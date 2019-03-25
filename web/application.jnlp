@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jnlp codebase="http://rapid.eik.bme.hu/~$$neptun$$/jdbc" href="application.jnlp">
+<jnlp codebase="https://rapid.eik.bme.hu/~$$neptun$$/jdbc" href="application.jnlp">
 	<information>
 		<title>$$app_name$$</title>
 		<vendor>$$student_name$$</vendor>
